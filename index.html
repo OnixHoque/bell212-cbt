@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bell-212 CBT System</title>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="semantic/semantic.min.js"></script>
+  <script src="js/crypto/crypto-core.js"></script>
+  <script src="js/crypto/sha256.js"></script>
+
+
+
+  <style>
+  * {
+    font-family: "Open Sans Regular";
+    font-size: 1.01em;
+  }
+
+  .ui .button {
+    font-family: "Open Sans Regular";
+
+    font-size: 1.01em;
+  }
+  .ui.red.vertical.stretched.menu .item:hover{
+    background-color: #DB4437 !important;
+    color: white !important;
+  }
+
+  a > div > p {
+    color: black;
+  }
+  .ui.fluid.card:hover *{
+    background-color: #DB4437;
+    color: white !important;
+  }
+
+  body {
+    background-color: white; /*Default bg, similar to the background's base color*/
+    background-image: url("images/helicopter-background.png");
+
+    background-position: right bottom; /*Positioning*/
+    background-size: 100%;
+    background-repeat: no-repeat; /*Prevent showing multiple background images*/
+  }
+
+
+
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="ui top red pointing menu">
+
+    <div class="ui container" style="margin-top: 20px; padding-left: 70px;">
+      <a href="index.html">
+        <h2 class="ui header left aligned">
+          <img src="images/bell-logo2.jpg"></img>
+          <div class="content">
+            Bell-212
+            <div class="sub header">Interactive Tutorial</div>
+          </div>
+        </h2>
+      </a>
+      <!-- <p class="item" style="font-size: 1.20em;">Bell-212 Tutorial</p></p> -->
+
+    </div>
+
+    <div class="right menu" style="padding-right: 60px;">
+      <div class="ui grid">
+        <div class="row"></div>
+        <div class="row">
+          <div class="ui red button" id="adminlogin">
+            Admin Login
+          </div>
+        </div>
+        <div class="row"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui grid">
+    <div class="stretched row" style="height: 80vh; padding-top: 3% ">
+      <div class="one wide column"></div>
+      <div class="five wide column">
+        <div class="ui basic text segment">
+          <div class="ui red vertical stretched menu" style="cursor: pointer; width: 100%;">
+            <a class="active item" style="background: white;" id="btnTutorial" href="airframe/airframe.html">
+              <p style="font-size: 110%;"><strong>Start Tutorial</strong></p>
+              <p style="text-align: justify;">Go through detailed tutorial on different trades. Learn about different componenets with the help of interactive 3D models and annotated videos.</p>
+            </a>
+            <a class="item" id="btnQuiz">
+              <p style="font-size: 110%;"><strong>Take a Quiz!</strong></p>
+              <p style="text-align: justify;">Take self-assessment tests to evaluate your learnings about a particular trade. Your score will be recorded in the leaderboard.</p>
+            </a>
+            <a class="item" id="btnLeaderboard" href="leaderboard.html">
+              <p style="font-size: 110%;"><strong>View Leaderboard</strong></p>
+              <p style="text-align: justify;">See how well you are performing against others. View the overall ranking and score of others who have taken the tests in different exam modules.</p>
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <!-- <div class="eleven wide column">
+      <div class="ui grid">
+      <div class="row" style=""></div>
+      <div class="row">
+      <div class="one wide column">
+    </div>
+    <div class="fourteen wide column">
+
+    <img src="images/helicopter-background.png" />
+  </div>
+
+
+</div>
+</div>
+
+
+
+</div> -->
+</div>
+</div>
+
+
+<div class="ui mini modal" id="login">
+  <i class="close icon"></i>
+  <div class="header">
+    <i class="red key icon" style="padding-right: 20px;"></i>
+    Administrative Mode
+  </div>
+
+  <!-- Modal content -->
+  <div class="ui basic text segment">
+
+    <p >
+      Please enter pin code:
+    </p>
+    <div class="ui fluid centered input">
+
+      <input type="password" id="pincode">
+    </div>
+
+    <div class="ui negative message" id="incorrectPasswordBanner">
+      <p>Incorrect Password!</p>
+      <i class="close icon" onclick="$('#incorrectPasswordBanner').fadeOut(); $('#pincode').focus()"></i>
+    </div>
+  </div>
+  <!-- End of Contents -->
+
+
+  <div class="actions">
+    <div class="ui basic deny button">
+      Cancel
+    </div>
+    <div class="ui red right labeled icon button" id="btnLogin" type="submit">
+      Login
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
+
+
+<div class="ui modal" id="quizpanel">
+  <!-- <i class="close icon"></i> -->
+  <div class="header" style="text-align: center;">
+    Select Quiz Topic
+  </div>
+
+  <!-- Modal content -->
+  <div class="ui basic text segment" style="margin: 20px;">
+    <div class="ui three column grid">
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=1">>
+          <div class="fluid content">
+            <p class="header">Engine</p>
+            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=2">
+          <div class="fluid content">
+            <p class="header">Airframe</p>
+            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=3">>
+          <div class="fluid content">
+            <p class="header">Electic Components</p>
+            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=4">>
+          <div class="fluid content">
+            <p class="header">Instruments</p>
+            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=5">>
+          <div class="fluid content">
+            <p class="header">Radio</p>
+            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=6">>
+          <div class="fluid content">
+            <p class="header">Armaments</p>
+            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- End of Contents -->
+
+
+  <div class="actions">
+    <div class="ui basic deny button">
+      Close
+    </div>
+  </div>
+</div>
+
+<script>
+
+var verifyPinCode = function(){
+  var pwd = $('#pincode').val();
+  if (pwd == '') return;
+  $('#pincode').addClass('disabled');
+  $('#incorrectPasswordBanner').hide();
+  $('#btnLogin').addClass('loading');
+
+
+  var hashText = CryptoJS.SHA256(pwd).toString();
+
+  var finish = $.post("controller/cred_checker.php", {password : hashText}, function(data){
+    $('#btnLogin').removeClass('loading');
+    $('#pincode').removeClass('disabled');
+    if (data == 'false')
+    {
+      $('#incorrectPasswordBanner').show();
+    }
+    else {
+      // alert('Invalid Password');
+      //alert('Correct Password!');
+      window.location.href = "admin_panel.php";
+    }
+  });
+  $('#pincode').val('');
+  //alert("Please wait while we are checking...");
+}
+
+
+$('#pincode').keypress(function (e) {
+  var key = e.which;
+  if(key == 13)  // the enter key code
+  {
+    verifyPinCode();
+  }
+});
+
+$("#adminlogin").click(function(){
+  $('#incorrectPasswordBanner').hide();
+  $('#pincode').val('');
+  $('#login').modal('show');
+});
+
+$('#btnQuiz').click(function(){
+  $('#quizpanel').modal('show');
+});
+
+
+
+$('#btnLogin').click(verifyPinCode);
+
+
+
+
+</script>
+
+</body>
+
+</html>

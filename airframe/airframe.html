@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bell-212 Tutorial</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  
+  <style>
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 1.01em;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 1.01em;
+    }
+
+  </style>
+
+</head>
+
+<body>
+ 
+
+<div class="ui large ten item top fixed red pointing menu">
+  
+  <div class="ui container" style="margin-top: 20px;">
+  <a href="index.html">
+  <h2 class="ui header left aligned">
+  <img src="../images/bell-logo2.jpg"></img>
+  <div class="content">
+    Bell-212
+    <div class="sub header">Interactive Tutorial</div>
+  </div>
+</h2>
+</a>
+  <!-- <p class="item" style="font-size: 1.20em;">Bell-212 Tutorial</p></p> -->
+  <a class="item"></a>
+    <a class="item" href="../engine/engine.html">Engine</a>
+    <a class="active item" href="#">Airframe</a>
+    <a class="item" href="../404.html">Electric Components</a>
+    <a class="item" href="../404.html">Instruments</a>
+    <a class="item" href="../404.html">Radio</a>
+    <a class="item" href="../404.html">Armaments</a>
+  </div>
+</div>
+
+<div class="ui grid">
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="stretched row">
+  <div class="one wide column"></div>
+  <div class="four wide column">
+    <div class="ui basic text segment" style="cursor: pointer;">
+      <div class="header" style="font-size: 16px;"><b>Contents</b></div>
+    <div class="ui fluid vertical red menu" style="height: 70vh; overflow-y: scroll;" >
+      
+      <div class="active item">
+        <p>Introduction to Airframe</p>
+        <div class="menu">
+          <a class="active item" onclick="javascript:setURL('overview.html');">Overview</a>
+          <a class="item" onclick="javascript:setURL('overhaul-stage.html');">States of Overhauling</a>
+          <a class="item" onclick="javascript:setURL('overhaul-process.html');">Process of Overhauling Job</a>
+        </div>
+      </div>
+      <a class="item" onclick="javascript:setURL('../404.html');">Publications</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Airworthiness</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Components Overhaul Schedule</a>
+      <a class="item" onclick="javascript:setURL('general-data.html');">General Data</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Main Rotor</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Tail Rotor</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Transmission Assembly</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Gearbox</a>
+      <a class="item" onclick="javascript:setURL('../404.html');">Power Train</a>
+      
+
+      
+      
+    </div>
+  </div>
+
+  </div>
+  <div class="eleven wide column">
+    <!-- <iframe id="canvas" src="overview.html" width="900" height="450" style="border: 1px lightgray solid;"> -->
+    <iframe id="canvas" src="overview.html" style="margin-bottom: 20px; height: 70vh; width: 65vw; border: 1px lightgray solid;">
+    </iframe>
+
+  </div>
+</div>
+</div>
+
+<script>
+
+  function setURL(url){
+    document.getElementById('canvas').src = url;
+  }
+
+  $('.menu')
+    .on('click', '.item', function() {
+        $(this)
+          .addClass('active')
+          .siblings('.item')
+            .removeClass('active');
+    });
+
+    $('.ui.multiple.dropdown').dropdown({
+      onAdd: function (value, text, $selected) {
+    $('.dropdown').blur();
+  }
+});
+  /*
+  $('.menu')
+    .on('click', '.item', function() {
+
+      /*if(!$(this).hasClass('dropdown')){
+        $(this)
+          .addClass('active')
+          .parent('.item')
+          .siblings('.item')
+            .removeClass('active');
+        }
+
+
+        
+    });*/
+
+    $('.dropdown').dropdown({transition: 'drop' }).dropdown({ on: 'hover' });
+;
+</script>
+
+</body>
+
+</html>

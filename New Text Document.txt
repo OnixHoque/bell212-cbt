@@ -1,0 +1,1 @@
+http://www.mysqltutorial.org/select-random-records-database-table.aspx

@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Transmission assembly</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+<style>
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 110%;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 110%;
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div class="ui basic segment">
+
+<!-- <div class="ui top attached basic tabular menu"> -->
+<div class="ui top attached pointing secondary menu">
+  <a class="active item" data-tab="first">Transmission System</a>
+  <a class="item" data-tab="second">3D Models</a>
+</div>
+<div class="ui bottom attached active basic tab segment" data-tab="first">
+  <h4 class="ui header">Transmission Assembly</h4>
+  <p>This component is used to transmit power from the engine through the main driveshaft to drive the main rotor, tail rotor and all other accessory driven components. It is located in front of engine on structural support. It consists of top case, ring gear case, support case, main case and accessory sump case. Inside the transmission assembly main input quill, bevel gear, accessory drive quill, lower planetary gear, lower sun gear, upper sun gear, upper planetary gear, mast adapter, hydraulic pump quill, techo generator quill, transmission pump quill and tail rotor drive quill.</p>
+
+  <h4 class="ui header">Transmission Oil System</h4>
+  <p>Specified oil is used for lubricating the transmission assembly. Transmission sump case is used as the oil reservoir and two oil level gauge one indicates low level another indicates full level are located at the right side of the sump case. A geared pump and an internal filter are also located inside the sump case. When the transmission runs the pump also runs and it’s pressure range is 0-70 PSI. The pump pressure enter the internal filter and from the filter goes to bypass valve. When oil temperature is 54 degree centigrade or below the bypass valve will be will be fully opened and oil will go to the external filter without going to the cooler. When the oil temperature rises above 54 degree centigrade but bellow 79 degree centigrade the bypass valve will be partially opened and some portion of oil will go to cooler. When oil temperature rises above 79 degree centigrade, the bypass valve will be fully closed and oil will go to cooler. From the cooler oil will go to external filter then to the oil pressure manifold from where oil will go to different jets to lubricate the different gears and bearings. During rotation of different gears and bearings if any teeth of gears or any bearing is damaged then there are three chip detector to indicate the metal chip.</p>
+
+  <h4 class="ui header">Mast Assembly</h4>
+  <p>The mast assembly is installed on the transmission mast adapter to transmit power with reduced RPM of 324 to the main rotor hub & blade assembly and to rotate with the same RPM.</p>
+</div>
+<div class="ui bottom attached basic tab segment" data-tab="second">
+  <iframe id="canvas" src="models/xmission.html" style="height: 80vh; width: 100%; border: 0px" scrolling="no">
+    </iframe>
+</div>
+
+
+</div>
+</body>
+<script type="text/javascript">
+  $('.menu .item')
+  .tab()
+;
+</script>
+
+</html>

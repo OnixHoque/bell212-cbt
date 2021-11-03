@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Powertrain</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+<style>
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 110%;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 110%;
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div class="ui basic segment">
+
+<!-- <div class="ui top attached basic tabular menu"> -->
+<div class="ui top attached pointing secondary menu">
+  <a class="active item" data-tab="first">Powertrain</a>
+  <a class="item" data-tab="second">3D Models</a>
+</div>
+<div class="ui bottom attached active basic tab segment" data-tab="first">
+  
+  <p>To operate the Bell 212 Helicopter, twin engine is used as the power source. The twin engine power is combined in combining gearbox (CGB) it also called reduction gearbox (RGB). From the CGB output shaft (6600 RPM) the power is transmitted to transmission through the main driveshaft to the transmission input quill (input drive gear). Inside the transmission the input drive gear is attached with bevel gear(attached with vertical shaft) where reduction takes place 2.138: l ratio ie 6600 RPM to 3087 RPM and this is the first stage reduction. With vertical shaft upper side lower sun gear is attached and lower planetary gear is attached with it and reduction takes place 3.087:1 ie 3087 RPM to 1000 RPM and this is the 2nd stage reduction. Lower planetary gear upper side is attached with upper sun gear upper side is attached with upper planetary gear where reduction takes place 3.087:1 ie 1000 RPM to 324 RPM and this is the 3rd stage reduction. Mast adapter is attached with upper planetary gear and the mast is installed on the mast adapter. Main Rotor hub and blade assembly is installed on the mast upper side. So, when the mast rotates the main rotor also rotate at 324 RPM. The total reduction from engine to main rotor is 20.37:1 ie 6600 RPM to 324 RPM.</p>
+
+  
+  <p>Again, in the sump case (transmission lower side) tail rotor drive gear is installed which rotates at 4300 RPM. Tail rotor driveshaft are installed with tail rotor drive gear which are also rotate at 4300 RPM transmit the power to the tail rotor gearbox input quill through intermediate gear box (42 degree gear box). Tail rotor gearbox output shaft RPM is 1660 RPMie reduction ratio is 2.59:1.  The tail rotor hub and blade assembly is installed on output shaft of tail rotor gearbox. So, tail rotor rotate at 1660 RPM and the total reduction is 3.975:1 ie 6600 RPM to 1660 RPM.</p>
+
+</div>
+<div class="ui bottom attached basic tab segment" data-tab="second">
+  <iframe id="canvas" src="models/powertrain.html" style="height: 80vh; width: 100%; border: 0px" scrolling="no">
+    </iframe>
+</div>
+
+
+</div>
+</body>
+<script type="text/javascript">
+  $('.menu .item')
+  .tab()
+;
+</script>
+
+</html>

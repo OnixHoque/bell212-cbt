@@ -1,7 +1,9 @@
 <?php
 $servername ="localhost";
 $username = "root";
-$password= "mysql";
+// $password= "mysql";
+$password= "";
+
 $dbname="cbt-db";
 
 $conn = mysqli_connect($servername,$username,$password,$dbname);

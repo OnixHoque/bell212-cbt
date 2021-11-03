@@ -16,6 +16,23 @@
 	</head>
 	
 	<body>
+	
+		<div class="ui top red pointing menu">
+
+			<div class="ui container" style="margin-top: 20px;">
+			  <a href="index.html">
+				<h2 class="ui header left aligned">
+				  <img src="images/bell-logo2.jpg"></img>
+				  <div class="content">
+					Quiz
+					<div class="sub header">Bell-212 CBT Module</div>
+				  </div>
+				</h2>
+			  </a>
+			  <!-- <p class="item" style="font-size: 1.20em;">Bell-212 Tutorial</p></p> -->
+
+			</div>
+		</div>
 
 <?php
 
@@ -23,7 +40,8 @@
 // print_r($_SESSION);
 
 
-$db = mysqli_connect("localhost", "root", "mysql", "cbt-db");
+// $db = mysqli_connect("localhost", "root", "mysql", "cbt-db");
+$db = mysqli_connect("localhost", "root", "", "cbt-db");
 
 //$trade_id = $_POST['TRADE_ID'];
 $trade_id = $_GET['type'];
@@ -33,11 +51,11 @@ $exp = mysqli_query($db, "SELECT QUESTION_COUNT FROM TRADES WHERE ID=".$trade_id
 $exp_count_row = mysqli_fetch_array($exp);
 $expected_question_count = $exp_count_row['QUESTION_COUNT'];
 
-echo "Expected Question: ".$expected_question_count."<br>";
+//echo "Expected Question: ".$expected_question_count."<br>";
 
 $questions = mysqli_query($db, "SELECT * FROM QUESTION_BANK WHERE TRADE_ID=".$trade_id." AND HIDDEN = 0 ORDER BY RAND() LIMIT ".$expected_question_count);
 $question_count = mysqli_num_rows($questions);
-echo "Total found : ".$question_count;
+//echo "Total found : ".$question_count;
 
 
 
@@ -46,43 +64,52 @@ if ($question_count < $expected_question_count)
   echo " WARNING! Not enough questions!"."<br>";
 }
 
+//$trade_name = mysqli_query($db, "SELECT TRADE_NAME FROM TRADES WHERE ID='".$trade_id."'");
+//echo $trade_name;
+//<h3 class='ui huge blue header'>".$trade_name."</h3>
+else{
+
 $i = 1;
 echo "
-<form action='' method='POST' id='quiz'>
-<div class='ui celled list'>";
+<div class='' style='border-style: inset; margin:2% 20%;'>
+<form action='' method='POST' id='quiz' class='ui form' style='padding: 5% 5%'>
+	
+	<div class='ui celled list'>";
+	
+$correct_answer = array();
 while ($row = mysqli_fetch_array($questions)) { 
   //echo "<p>".$i.") ".$row['ID'].". ".$row['DESCRIPTION']."<br>";
-  
+  $correct_answer[$i-1] = $row['CORRECT_ANS'];
   echo "
 	<div class='item' style='margin: 20px;'>
                 
-		<h3 class='ui big blue header'> ".$i.") ".$row['DESCRIPTION']."</h3>
+		<h3 class='ui big blue header'>  ".$row['DESCRIPTION']."</h3>
 		
 		<div class='field' style='margin: 5px;'>	
 			<div class='ui radio checkbox'>
 				<input type='radio' name='question-".$i."-answers' id='question-".$i."-answers-A' value='1'/>
-				<label for='question-".$i."-answers-A'>A) ".$row['OPT_A']." </label>
+				<label for='question-".$i."-answers-A'> ".$row['OPT_A']." </label>
 			</div>
 		</div>
 		
 		<div class='field' style='margin: 5px;'>	
 			<div class='ui radio checkbox'>
 				<input type='radio' name='question-".$i."-answers' id='question-".$i."-answers-B' value='2' />
-				<label for='question-".$i."-answers-B'>B) ".$row['OPT_B']."</label>
+				<label for='question-".$i."-answers-B'> ".$row['OPT_B']."</label>
 			</div>
 		</div>
 		
 		<div class='field' style='margin: 5px;'>	
 			<div class='ui radio checkbox'>
 				<input type='radio' name='question-".$i."-answers' id='question-".$i."-answers-C' value='3' />
-				<label for='question-".$i."-answers-C'>C) ".$row['OPT_C']."</label>
+				<label for='question-".$i."-answers-C'> ".$row['OPT_C']."</label>
 			</div>
 		</div>
 		
 		<div class='field' style='margin: 5px;'>	
 			<div class='ui radio checkbox'>
 				<input type='radio' name='question-".$i."-answers' id='question-".$i."-answers-D' value='4' />
-				<label for='question-".$i."-answers-D'>D) ".$row['OPT_D']."</label>
+				<label for='question-".$i."-answers-D'> ".$row['OPT_D']."</label>
 			</div>
 		</div>
                 
@@ -93,41 +120,120 @@ while ($row = mysqli_fetch_array($questions)) {
 }
 
 echo "
-	</div>
+	
     <center>
-		<button class='ui positive button' style='margin-top: 25px;padding: 15px; width=800px;' type='submit' name='submit'>Submit Quiz</button>
+		<button class='ui positive button' style='margin: 20px;padding: 15px; width=800px;' type='submit' name='submit' id='submit_button'>Submit Answers</button>
 	</center>
+	</div>
+	</form>
+</div>
 ";
+
+
+$totalCorrect = 0;
+$totalWrong = 0;
 
 if(isset($_POST['submit']))
 {
-	
-	$answer1 = $_POST['question-1-answers'];
-	$answer2 = $_POST['question-2-answers'];
-	$answer3 = $_POST['question-3-answers'];
-	$answer4 = $_POST['question-4-answers'];
-	$answer5 = $_POST['question-5-answers'];
-	echo $answer1;
+	$answer = array();
+	for($i=0; $i< $question_count; $i=$i+1)
+	{
+		$index = "question-" . ($i+1) . "-answers";
+		$answer[$i] = $_POST[$index];
+	}
 
 	$totalCorrect = 0;
 	
-	while ($row = mysqli_fetch_array($questions)) {
-		$i = 1;
-		echo "hee";
-		$answer = $_POST['question-$i-answers'];
-		echo $answer;
-		if ($answer == $row['CORRECT_ANS']) { $totalCorrect++; }
-		
+	for ($j = 0; $j < $question_count; $j+=1) {
+		//echo "$correct_answer[$j]"; 
+		//echo "$answer[$j]"; 
+		if ($correct_answer[$j] == $answer[$j]) { $totalCorrect++; }
+
 	}
-	//if ($answer1 == "B") { $totalCorrect++; }
-	//if ($answer2 == "A") { $totalCorrect++; }
-	//if ($answer3 == "C") { $totalCorrect++; }
-	//if ($answer4 == "D") { $totalCorrect++; }
-	//if ($answer5) { $totalCorrect++; }
-	//header('Refresh: 0; URL=http://localhost/cbt');
-	echo "<div id='results'>$totalCorrect / 5 correct</div>";
+	$totalWrong=5-$totalCorrect; 
+
+	//echo "<div id='results'>$totalCorrect / 5 correct</div>";
+	echo "<script type='text/javascript'>
+		  $(document).ready(function(){
+		  $('#score_board').modal('show');
+		});
+		</script>";
+	
 }
+echo "
+
+	<div class='ui modal' id='score_board'>
+			<!-- <i class='close icon'></i> -->
+
+			<div class='header' style='text-align: center;'>Quiz Score</div>
+			  
+			<div class='results' style='margin:10px; padding:10px'>
+				<p>Total questions: $expected_question_count</p>
+				<p>Correct answer : $totalCorrect</p>
+				<p>Wrong answer   : $totalWrong</p>
+			</div>		  
+
+		<div class='' style='display: none;border-top: 1px solid lightgrey;' id='savediv'>
+			<form class='ui form' method='POST' style='margin:10px; padding:10px;'>
+			
+				<div class='required field column'>
+					<label>Enter Name</label>
+					<div class='ui input focus' style='width:100%'>
+						<input type='text' id='' name='name'
+							style='' class='form-control' placeholder='Name'>
+					</div>
+				</div>
+				
+				<div class='ui two column grid'>
+					<div class='required field column'>
+						<label>BAF ID</label>
+						<div class='ui input focus' style=''>
+							<input type='text' id='' name='op1'
+									style='' class='form-control' placeholder='ID'>
+						</div>
+					</div>
+			  
+					<div class='required field column'>
+						<label>Rank</label>
+						<div class='ui input focus' style=''>
+							<input type='text' id='' name='op2'
+									style='' class='form-control' placeholder='rank'>
+						</div>
+					</div>		
+				</div>
+			</form>  
+				<div class='' style='border-top: 1px solid lightgrey' id=''>
+					<div class='ui positive button left floated' id='update' style='margin: 10px;'>Update</div>
+					<div class='ui basic deny button right floated' id='' style='margin: 10px;'>Cancel</div>
+				</div>
+		</div>
+		
+		<div class='' style='border-top: 1px groove' id='prevdiv'>
+			<div class='ui positive button left floated' id='save' style='margin: 10px;'>Save</div>
+			<div class='ui basic deny button right floated' id='cancel' style='margin: 10px;'>Cancel</div>
+		</div>
+	</div>
+
+	";
+
+}
+
 ?>
+
+<script type="text/javascript">
+    document.getElementById("cancel").onclick = function () {
+        location.href = "http://localhost/cbt/";
+    };
+	
+	document.getElementById("save").onclick = function () {
+        document.getElementById("savediv").style.display = "block";
+		document.getElementById("save").innerHTML  = "Update";
+		document.getElementById("prevdiv").style.display  = "none";
+    };
+	
+</script>
+
+
 
 	</body>
 </html>

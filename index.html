@@ -40,14 +40,14 @@
     color: white !important;
   }
 
-  body {
-    background-color: white; /*Default bg, similar to the background's base color*/
-    background-image: url("images/helicopter-background.png");
+  
 
-    background-position: right bottom; /*Positioning*/
-    background-size: 100%;
-    background-repeat: no-repeat; /*Prevent showing multiple background images*/
-  }
+  body {
+  background-image: url("images/bell-back.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
 
 
 
@@ -58,7 +58,7 @@
 <body>
 
 
-  <div class="ui top red pointing menu">
+  <div class="ui top red pointing menu" style="opacity: 0.8">
 
     <div class="ui container" style="margin-top: 20px; padding-left: 70px;">
       <a href="index.html">
@@ -92,16 +92,16 @@
       <div class="one wide column"></div>
       <div class="five wide column">
         <div class="ui basic text segment">
-          <div class="ui red vertical stretched menu" style="cursor: pointer; width: 100%;">
-            <a class="active item" style="background: white;" id="btnTutorial" href="airframe/airframe.html">
+          <div class="ui red vertical stretched menu" style="cursor: pointer; width: 100%;" style="opacity: .8">
+            <a class="active item" style="background: white;" id="btnTutorial">
               <p style="font-size: 110%;"><strong>Start Tutorial</strong></p>
-              <p style="text-align: justify;">Go through detailed tutorial on different trades. Learn about different componenets with the help of interactive 3D models and annotated videos.</p>
+              <p style="text-align: justify;">Go through detailed tutorial on different trades. Learn about different componenets with the help of interactive 3D models.</p>
             </a>
             <a class="item" id="btnQuiz">
               <p style="font-size: 110%;"><strong>Take a Quiz!</strong></p>
               <p style="text-align: justify;">Take self-assessment tests to evaluate your learnings about a particular trade. Your score will be recorded in the leaderboard.</p>
             </a>
-            <a class="item" id="btnLeaderboard" href="leaderboard.html">
+            <a class="item" id="btnLeaderboard" href="leaderboard.php">
               <p style="font-size: 110%;"><strong>View Leaderboard</strong></p>
               <p style="text-align: justify;">See how well you are performing against others. View the overall ranking and score of others who have taken the tests in different exam modules.</p>
             </a>
@@ -168,21 +168,92 @@
   </div>
 </div>
 
+<!-- <tutorial> -->
+<div class="ui modal" id="tutorialpanel">
+  <!-- <i class="close icon"></i> -->
+  <div class="header" style="text-align: center;">
+    Select Tutorial Topic
+  </div>
 
+  <!-- Modal content for quiz -->
+  <div class="ui basic text segment" style="margin: 20px;">
+    <div class="ui three column grid">
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="engine/engine.html">
+          <div class="fluid content">
+            <p class="header">Engine</p>
+            <p>An engine or motor is a machine designed to convert one form of energy into mechanical energy.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="airframe/airframe.html">
+          <div class="fluid content">
+            <p class="header">Airframe</p>
+            <p>The mechanical structure of an aircraft is known as the airframe. Includes fuselage, undercarriage, empennage and wings.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="electric/electric.html">
+          <div class="fluid content">
+            <p class="header">Electic Components</p>
+            <p>The electrical systems, in most helicopters, reflect the increased use of sophisticated avionics and other electrical accessories.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="Instruments/instruments.html">
+          <div class="fluid content">
+            <p class="header">Instruments</p>
+            <p>The first prototype Bell 212 had an instrument flight rules (IFR) instrument kit with a large fin on the roof to change the aircraft’s turning operation.</p>
+          </div>
+        </a>
+      </div>
+      <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="radio/radio.html">
+          <div class="fluid content">
+            <p class="header">Radio</p>
+            <p>The instrument flight rules (IFR) avionics system includes twin allied signal KTR 908 720-channel, very-high-frequency transceivers etc.</p>
+          </div>
+        </a>
+      </div>
+      <!-- <div class="column">
+        <a class="ui fluid card" style="height: 150px;" href="404.html">
+          <div class="fluid content">
+            <p class="header">Armaments</p>
+            <p>All the cannon and small arms collectively, with their equipments, belonging to a ship or a fortification.</p>
+          </div>
+        </a>
+      </div> -->
+    </div>
+
+  </div>
+  <!-- End of Contents -->
+
+
+  <div class="actions">
+    <div class="ui basic deny button">
+      Close
+    </div>
+  </div>
+</div>
+
+<!-- <quiz> -->
 <div class="ui modal" id="quizpanel">
   <!-- <i class="close icon"></i> -->
   <div class="header" style="text-align: center;">
     Select Quiz Topic
   </div>
 
-  <!-- Modal content -->
+  <!-- Modal content for quiz -->
   <div class="ui basic text segment" style="margin: 20px;">
     <div class="ui three column grid">
       <div class="column">
-        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=1">>
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=1">
           <div class="fluid content">
             <p class="header">Engine</p>
-            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+            <p>An engine or motor is a machine designed to convert one form of energy into mechanical energy.</p>
           </div>
         </a>
       </div>
@@ -190,39 +261,39 @@
         <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=2">
           <div class="fluid content">
             <p class="header">Airframe</p>
-            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+            <p>The mechanical structure of an aircraft is known as the airframe. Includes fuselage, undercarriage, empennage and wings.</p>
           </div>
         </a>
       </div>
       <div class="column">
-        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=3">>
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=3">
           <div class="fluid content">
             <p class="header">Electic Components</p>
-            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+            <p>The electrical systems, in most helicopters, reflect the increased use of sophisticated avionics and other electrical accessories.</p>
           </div>
         </a>
       </div>
       <div class="column">
-        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=4">>
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=4">
           <div class="fluid content">
             <p class="header">Instruments</p>
-            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+            <p>The first prototype Bell 212 had an instrument flight rules (IFR) instrument kit with a large fin on the roof to change the aircraft’s turning operation.</p>
           </div>
         </a>
       </div>
       <div class="column">
-        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=5">>
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=5">
           <div class="fluid content">
             <p class="header">Radio</p>
-            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+            <p>The instrument flight rules (IFR) avionics system includes twin allied signal KTR 908 720-channel, very-high-frequency transceivers etc.</p>
           </div>
         </a>
       </div>
       <div class="column">
-        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=6">>
+        <a class="ui fluid card" style="height: 150px;" href="quiz.php?type=6">
           <div class="fluid content">
             <p class="header">Armaments</p>
-            <p>Topics include Lorem ipsum dolor sit amet, consectetur adipiscing elit. In semper orci id porttitor vestibulum.</p>
+            <p>All the cannon and small arms collectively, with their equipments, belonging to a ship or a fortification.</p>
           </div>
         </a>
       </div>
@@ -287,6 +358,10 @@ $('#btnQuiz').click(function(){
   $('#quizpanel').modal('show');
 });
 
+$('#btnTutorial').click(function(){
+  $('#tutorialpanel').modal('show');
+});
+
 
 
 $('#btnLogin').click(verifyPinCode);
@@ -297,5 +372,8 @@ $('#btnLogin').click(verifyPinCode);
 </script>
 
 </body>
+<footer>
+  <p align="middle">Developed by <a style="text-shadow: .5px .5px 2px #000000; color: #ff0000" href="https://cse.mist.ac.bd">Dept of CSE, MIST</a> </p>
+</footer>
 
 </html>

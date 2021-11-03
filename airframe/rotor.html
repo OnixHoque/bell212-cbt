@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Overhaul Stages</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+<style>
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 110%;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 110%;
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div class="ui basic segment">
+
+<!-- <div class="ui top attached basic tabular menu"> -->
+<div class="ui top attached pointing secondary menu">
+  <a class="active item" data-tab="first">Main Rotor System</a>
+  <a class="item" data-tab="second">3D Models</a>
+</div>
+<div class="ui bottom attached active basic tab segment" data-tab="first">
+  <p>Main rotor system is used to move the helicopter to forward, backward, sidewise, upward & downward. It consists of main rotor hub assembly- two grips with two pitch horn, yoke with Trunnion & pillow blocks, stabilizer bar, swash plate assembly, collective sleeve & scissors assembly, two tension torsion strap, two adjustable drag brace and two main rotor blades assembly.</p>
+<p>
+The Swash plate& support assembly along with collective sleeve & scissors assembly are installed on the transmission assembly over the mast.The trunnion is attached with yoke assembly in conjunction with two pillow blocks to allow the main rotor to flap.Two tension torsion straps are installed inside two spindles of the yoke to counteract the aerodynamic forces which tend to change the blade pitch angle. Two main rotor grips with two horns are installed on both sides of the yoke spindles to install two main rotor blades. Two drag brace assemblies are installed at the trailing edge of the blade for blades alignment.After main rotor blade and hub assembly alignment & balancing it is installed on the mast assembly above the swash plate. Non-rotating part of the swash plate is connected with two hydraulic actuator (cyclic controls) and collective lever with collective hydraulic actuator. Stabilizer bar is assembly is installed over the yoke with the trunnion for better stability at all flight attitudes. Both pitch links are attached with both pitch horns and both control tubes attached with both scissors assembly.
+</p>
+</div>
+<div class="ui bottom attached basic tab segment" data-tab="second">
+  <iframe id="canvas" src="models/rotor3D.html" style="height: 80vh; width: 100%; border: 0px" scrolling="no">
+    </iframe>
+</div>
+
+
+</div>
+</body>
+<script type="text/javascript">
+  $('.menu .item')
+  .tab()
+;
+</script>
+
+</html>

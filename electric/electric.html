@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bell-212 Tutorial - Electric System</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+  
+  <style>
+    body {
+  background-image: url('../images/bell-back.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 1.01em;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 1.01em;
+    }
+
+  </style>
+
+</head>
+
+<body>
+ 
+
+<div class="ui large eight item top fixed red pointing menu" style="opacity: .8">
+  <div class="ui container">
+  <a href="../index.html">
+  <h2 class="ui header left aligned">
+  <img src="../images/bell-logo2.jpg"></img>
+  <div class="content">
+    Bell-212
+    <div class="sub header">Interactive Tutorial</div>
+  </div>
+</h2>
+</a>
+  <!-- <p class="item" style="font-size: 1.20em;">Bell-212 Tutorial</p></p> -->
+  <p class="item"></p>
+    <a class="item" href="../engine/engine.html">Engine</a>
+    <a class="item" href="../airframe/airframe.html">Airframe</a>
+    <a class="active item" href="#" id="navmenu">Electric Components</a>
+    <a class="item" href="../instruments/instruments.html">Instruments</a>
+    <a class="item" href="../radio/radio.html">Radio</a>
+    <!-- <a class="item" href="../404.html">Armaments</a> -->
+  </div>
+</div>
+
+<div class="ui grid">
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="stretched row">
+  <div class="one wide column"></div>
+  <div class="four wide column">
+    <div class="ui basic text segment" style="cursor: pointer;">
+      <div class="header" style="font-size: 16px;"><b>Contents</b></div>
+    <div class="ui fluid vertical red menu" style="height: 70vh; overflow-y: scroll;" id="hybrid">
+      
+      <a class="active item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=1;document.getElementById('currentSection').innerHTML = 'Overview';">Overview</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=2;document.getElementById('currentSection').innerHTML = 'Power Supply System';">Power Supply System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=3;document.getElementById('currentSection').innerHTML = 'DC Power Supply System';">DC Power Supply System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=13;document.getElementById('currentSection').innerHTML = 'AC Power Supply System';">AC Power Supply System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=14;document.getElementById('currentSection').innerHTML = 'Bus Arrangements';">Bus Arrangements</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=16;document.getElementById('currentSection').innerHTML = 'Interior Lighting System';">Interior Lighting System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=19;document.getElementById('currentSection').innerHTML = 'Exterior Lighting System';">Exterior Lighting System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=21;document.getElementById('currentSection').innerHTML = 'Caution & Warning System';">Caution & Warning System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=31;document.getElementById('currentSection').innerHTML = 'Engine Control & Accessories System';">Engine Control & Accessories System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=35;document.getElementById('currentSection').innerHTML = 'Flight Control System';">Flight Control System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=36;document.getElementById('currentSection').innerHTML = 'Heating System';">Heating System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=38;document.getElementById('currentSection').innerHTML = 'Miscellaneous Electrical System';">Miscellaneous Electrical System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=40;document.getElementById('currentSection').innerHTML = 'Air-conditioning System';">Air-conditioning System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=41;document.getElementById('currentSection').innerHTML = 'Under Sling system';">Under Sling system</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=42;document.getElementById('currentSection').innerHTML = 'Hoisting System';">Hoisting System</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=43;document.getElementById('currentSection').innerHTML = 'Nite-sun SX-16';">Nite-sun SX-16</a>
+    </div>
+  </div>
+
+  </div>
+  <div class="eleven wide column">
+  <div class="ui breadcrumb">
+  <div class="section">Electric System</div>
+  <i class="right chevron icon divider"></i>
+  <div class="active section" id="currentSection">Overview</div>
+  
+</div>
+  <br>
+    <iframe id="canvas" src="../js/pdfjs/web/viewer.html?file=docs/electric.pdf" style="height: 80vh; width: 65vw; padding: 1px; border: 0px;">
+    </iframe>
+
+  </div>
+</div>
+</div>
+
+<script>
+
+  $('.menu')
+    .on('click', '.item', function() {
+        $('.item').removeClass('active');
+        // $('option').removeClass('selected');
+        $(this).not('.dropdown')
+          .addClass('active')
+          .siblings('.item')
+            .removeClass('active');
+        $('#navmenu').addClass('active');
+    });
+
+</script>
+
+</body>
+
+</html>

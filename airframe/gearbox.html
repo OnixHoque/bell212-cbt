@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Gearbox assembly</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+<style>
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 110%;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 110%;
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div class="ui basic segment">
+
+<!-- <div class="ui top attached basic tabular menu"> -->
+<div class="ui top attached pointing secondary menu">
+  <a class="active item" data-tab="first">Gearbox System</a>
+  <a class="item" data-tab="second">3D Models</a>
+</div>
+<div class="ui bottom attached active basic tab segment" data-tab="first">
+  <h4 class="ui header">Intermediate gear box (42 degree)</h4>
+  <p>This component is used to transmit the power taken from the transmission to the tail rotor gearbox through the tail rotor driveshaft by changing the direction of route to 42 degree as the vertical fin is attached on tail boom at 42 degree. In this gear box RPM remains the same i.e 4300 which was taken from transmission.</p>
+
+  <h4 class="ui header">Tail rotor gearbox (90 degree gearbox)</h4>
+  <p>This component is installed on the top of vertical fin. The output RPM of 4300 from the 42 degree gearbox enter into the 90 degree gearbox and it’s output provides reduced RPM to 1660. The tail rotor hub and blade assembly is installed on the output shaft of tail rotor gearbox, so the tail rotor hub and blade assembly also rotate at 1660 RPM.</p>
+
+</div>
+<div class="ui bottom attached basic tab segment" data-tab="second">
+  <iframe id="canvas" src="models/gearbox.html" style="height: 80vh; width: 100%; border: 0px" scrolling="no">
+    </iframe>
+</div>
+
+
+</div>
+</body>
+<script type="text/javascript">
+  $('.menu .item')
+  .tab()
+;
+</script>
+
+</html>

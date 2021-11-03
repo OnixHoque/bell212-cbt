@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tail Rotor</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+<style>
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 110%;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 110%;
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div class="ui basic segment">
+
+<!-- <div class="ui top attached basic tabular menu"> -->
+<div class="ui top attached pointing secondary menu">
+  <a class="active item" data-tab="first">Tail Rotor System</a>
+  <a class="item" data-tab="second">3D Model</a>
+</div>
+<div class="ui bottom attached active basic tab segment" data-tab="first">
+  <p>The tail rotor control system is used for directional control ie turning to the left or to the right and it also act as anti-torque control to counteract the main rotor torque. It consists of tail rotor hub assembly, two tail rotor blades, crosshead assembly with counter weights and two pitch links.Two tail rotor blades are attached with tail rotor hub assembly and installed on the tail rotor gearbox output shaft. The crosshead assembly is installed on the TGB output shaft over the tail rotor hub assembly and two pitch links are attached with two pitch horns in the tail rotor hub assembly.</p>
+
+</div>
+<div class="ui bottom attached basic tab segment" data-tab="second">
+  <p align="middle">
+    [Mouse Click to rotate, Scroll to zoom in and out, Shift + Click to move the model]
+  <iframe id="canvas" src="models/viewstl.html?model=tailrotor.stl" style="height: 80vh; width: 100%; border: 0px" scrolling="no">
+    </iframe></p>
+</div>
+
+
+</div>
+</body>
+<script type="text/javascript">
+  $('.menu .item')
+  .tab()
+;
+</script>
+
+</html>

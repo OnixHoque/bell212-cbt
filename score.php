@@ -6,7 +6,8 @@
 	
 	<title>Airforce Quiz</title>
 	
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<title>Bell-212 CBT - Admin Panel</title>
+	<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
 </head>
 
 <body>

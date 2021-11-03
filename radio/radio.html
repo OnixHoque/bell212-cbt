@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Bell-212 Tutorial - Radio</title>
+  <link rel="stylesheet" href="../semantic/semantic.min.css">
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../js/jquery/jquery-3.4.1.min.js"></script>
+  <script src="../semantic/semantic.min.js"></script>
+  
+  <style>
+    body {
+  background-image: url('../images/bell-back.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+    * {
+      font-family: "Open Sans Regular";
+      font-size: 1.01em;
+    }
+
+    .ui .button {
+      font-family: "Open Sans Regular";
+
+      font-size: 1.01em;
+    }
+
+  </style>
+
+</head>
+
+<body>
+ 
+
+<div class="ui large eight item top fixed red pointing menu" style="opacity: .8">
+  <div class="ui container">
+  <a href="../index.html">
+  <h2 class="ui header left aligned">
+  <img src="../images/bell-logo2.jpg"></img>
+  <div class="content">
+    Bell-212
+    <div class="sub header">Interactive Tutorial</div>
+  </div>
+</h2>
+</a>
+  <!-- <p class="item" style="font-size: 1.20em;">Bell-212 Tutorial</p></p> -->
+  <p class="item"></p>
+    <a class="item" href="../engine/engine.html">Engine</a>
+    <a class="item" href="../airframe/airframe.html">Airframe</a>
+    <a class="item" href="../electric/electric.html">Electric Components</a>
+    <a class="item" href="../instruments/instruments.html">Instruments</a>
+    <a class="active item" href="#" id="navmenu">Radio</a>
+    <!-- <a class="item" href="../404.html">Armaments</a> -->
+  </div>
+</div>
+
+<div class="ui grid">
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="stretched row">
+  <div class="one wide column"></div>
+  <div class="four wide column">
+    <div class="ui basic text segment" style="cursor: pointer;">
+      <div class="header" style="font-size: 16px;"><b>Contents</b></div>
+    <div class="ui fluid vertical red menu" style="height: 70vh; overflow-y: scroll;" id="hybrid">
+      
+      <a class="active item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=1;document.getElementById('currentSection').innerHTML = 'Overview';">Overview</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=3;document.getElementById('currentSection').innerHTML = 'INTERCOM SYS : A-301-6W';">INTERCOM SYS : A-301-6W</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=5;document.getElementById('currentSection').innerHTML = 'VHF R/T : KTR-908';">VHF R/T : KTR-908</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=7;document.getElementById('currentSection').innerHTML = 'HF R/T: ASB-850';">HF R/T: ASB-850</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=9;document.getElementById('currentSection').innerHTML = 'HF R/T : KHF-950';">HF R/T : KHF-950</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=11;document.getElementById('currentSection').innerHTML = 'ADF RXR : KDF-8000';">ADF RXR : KDF-8000</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=13;document.getElementById('currentSection').innerHTML = 'ADF RXR : KDF-806';">ADF RXR : KDF-806</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=15;document.getElementById('currentSection').innerHTML = 'VOR/NAV RXR : KNR-634';">VOR/NAV RXR : KNR-634</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=17;document.getElementById('currentSection').innerHTML = 'MARKER BEACON';">MARKER BEACON</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=18;document.getElementById('currentSection').innerHTML = 'ATC TRANSPONDER : KXP-756';">ATC TRANSPONDER : KXP-756</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=20;document.getElementById('currentSection').innerHTML = 'DME : KDM-706';">DME : KDM-706</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=22;document.getElementById('currentSection').innerHTML = 'ELT POITER : P-3000';">ELT POITER : P-3000</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=23;document.getElementById('currentSection').innerHTML = 'ELT ARTEX 406';">ELT ARTEX 406</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=24;document.getElementById('currentSection').innerHTML = 'VHF HOMER CHELTON 2000';">VHF HOMER CHELTON 2000</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=25;document.getElementById('currentSection').innerHTML = 'RADAR ALTIMETER : KRA-405';">RADAR ALTIMETER : KRA-405</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=27;document.getElementById('currentSection').innerHTML = 'WEATHER RADAR : PRIMUS-700';">WEATHER RADAR : PRIMUS-700</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=28;document.getElementById('currentSection').innerHTML = 'WEATHER RADAR : RDR-2000';">WEATHER RADAR : RDR-2000</a>
+<a class="item" onclick="document.getElementById('canvas').contentWindow.PDFViewerApplication.page=30;document.getElementById('currentSection').innerHTML = 'GPS : 165 TSO';">GPS : 165 TSO</a>
+
+    </div>
+  </div>
+
+  </div>
+  <div class="eleven wide column">
+  <div class="ui breadcrumb">
+  <div class="section">Radio</div>
+  <i class="right chevron icon divider"></i>
+  <div class="active section" id="currentSection">Overview</div>
+  
+</div>
+  <br>
+    <iframe id="canvas" src="../js/pdfjs/web/viewer.html?file=docs/radio.pdf" style="height: 80vh; width: 65vw; padding: 1px; border: 0px;">
+    </iframe>
+
+  </div>
+</div>
+</div>
+
+<script>
+
+  $('.menu')
+    .on('click', '.item', function() {
+        $('.item').removeClass('active');
+        // $('option').removeClass('selected');
+        $(this).not('.dropdown')
+          .addClass('active')
+          .siblings('.item')
+            .removeClass('active');
+        $('#navmenu').addClass('active');
+    });
+
+</script>
+
+</body>
+
+</html>

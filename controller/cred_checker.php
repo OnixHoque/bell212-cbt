@@ -3,7 +3,9 @@ session_start();
 
 
 // connect to database
-$db = mysqli_connect("localhost", "root", "mysql", "cbt-db");
+// $db = mysqli_connect("localhost", "root", "mysql", "cbt-db");
+$db = mysqli_connect("localhost", "root", "", "cbt-db");
+
 
 $pincode = mysqli_query($db, "SELECT * FROM CREDENTIAL");
 $row = mysqli_fetch_array($pincode);

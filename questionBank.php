@@ -45,6 +45,15 @@
 </head>
 
 <body>
+	<?php
+			// $db = mysqli_connect("localhost", "root", "mysql", "cbt-db");
+			$db = mysqli_connect("localhost", "root", "", "cbt-db");
+
+			$trade_id = $_GET['type'];
+	?>
+
+
+
 
 
   <div class="ui top red pointing menu">
@@ -54,8 +63,14 @@
         <h2 class="ui header left aligned">
           <img src="images/bell-logo2.jpg"></img>
           <div class="content">
-            Bell-212
-            <div class="sub header">CBT Question Bank</div>
+            CBT Question Bank
+            <div class="sub header">
+            	<?php
+            		$query = mysqli_query($db, "SELECT TRADE_NAME FROM trades where ID=$trade_id");
+								$trade_name = mysqli_fetch_array($query)['TRADE_NAME'];
+								echo "Trade: $trade_name";
+            	?>
+            </div>
           </div>
         </h2>
       </a>
@@ -63,7 +78,49 @@
 
     </div>
   </div>
-  
+  <?php
+ 
+if(isset($_POST['submit']))
+{
+	$ques = $_POST['ques'];
+	$op1 = $_POST['op1'];
+	$op2 = $_POST['op2'];
+	$op3 = $_POST['op3'];
+	$op4 = $_POST['op4'];
+	$ans = $_POST['ans'];
+	// $tradeid = $_POST['type'];
+	$tradeid = $trade_id;
+
+	 
+	if($ques!="" && $op1!="" && $op2!="" && $op3!="" && $op4!="" && $ans!="" && $tradeid!="")
+	{
+		$query = "INSERT INTO QUESTION_BANK (TRADE_ID,DESCRIPTION,OPT_A,OPT_B,OPT_C,OPT_D,CORRECT_ANS,HIDDEN)
+		VALUES ('$tradeid','$ques','$op1','$op2','$op3','$op4','$ans','0')";
+		$data = mysqli_query($db, $query);
+		
+		if($data)
+		{
+			//echo "Data inserted into database";
+			
+			echo"
+			<div class='ui success message transition' style='margin-left: 15%; margin-right: 15%;'>
+				<i class='close icon'></i>
+				<div class='header'>Data inserted successfully.</div>
+			</div>";
+		}
+	}
+	else
+	{
+		//echo "All fields are required.";
+		
+		echo"
+			<div class='ui warning message transition' style='padding-left: 15%; padding-right: 15%;'>
+				<i class='close icon'></i>
+				<div class='header'>All fields are required.</div>
+			</div>";
+	}
+}
+?>
 		<button class="ui button green" id="addQuestionButton"
 				style="margin-top: 10px;margin-bottom: 10px;padding: 15px; margin-left:15%" >
 				<i class="add icon"></i>Add Question
@@ -84,10 +141,6 @@
         </thead>
         <tbody>
 		<?php
-			// $db = mysqli_connect("localhost", "root", "mysql", "cbt-db");
-			$db = mysqli_connect("localhost", "root", "", "cbt-db");
-
-			$trade_id = $_GET['type'];
 			
 			
 			$questions = mysqli_query($db, "SELECT * FROM QUESTION_BANK WHERE TRADE_ID=".$trade_id." AND HIDDEN = 0");
@@ -143,11 +196,11 @@
   <div class="header" style="text-align: center;">
     Add Quiz Question
   </div>
-<form class="ui form" method="POST">
+<form class="ui form" method="POST" action="questionBank.php?type=<?php echo $trade_id ?>">
   <div class="ui basic text segment" style="margin: 20px;">
 	
 	<div class="required field">
-		<label>Paste Question</label>
+		<label>Question Statement</label>
 		<textarea rows="2" class="form-control" id="ques" name="ques" ></textarea>
 	</div>
 
@@ -157,7 +210,7 @@
 			<label>Option 1</label>
 			<div class="ui input focus" style="">
 				<input type="text" id="op1" name="op1" 
-						style="" class="form-control" placeholder="Paste Option 1">
+						style="" class="form-control" placeholder="Option 1 Statement">
 			</div>
 		</div>
 	  
@@ -165,7 +218,7 @@
 			<label>Option 2</label>
 			<div class="ui input focus" style="">
 				<input type="text" id="op2" name="op2" 
-						style="" class="form-control" placeholder="Paste Option 2">
+						style="" class="form-control" placeholder="Option 2 Statement">
 			</div>
 		</div>
 	  
@@ -173,7 +226,7 @@
 			<label>Option 3</label>
 			<div class="ui input focus" style="">
 				<input type="text" id="op3" name="op3" 
-						style="" class="form-control" placeholder="Paste Option 3">
+						style="" class="form-control" placeholder="Option 3 Statement">
 			</div>
 		</div>
 	  
@@ -181,7 +234,7 @@
 			<label>Option 4</label>
 			<div class="ui input focus" style="">
 				<input type="text" id="op4" name="op4" 
-						style="" class="form-control" placeholder="Paste Option 4">
+						style="" class="form-control" placeholder="Option 4 Statement">
 			</div>
 		</div>
 		
@@ -197,13 +250,13 @@
 		
 		<div class="required field eight wide">
 			<label>Question Module</label>
-			<select class="ui dropdown" name="type">
-				<option value="1">Engine</option>
-				<option value="2">Airframe</option>
-				<option value="3">Electic Components</option>
-				<option value="4">Instruments</option>
-				<option value="5">Radio</option>
-				<option value="6">Armaments</option>
+			<select class="ui dropdown" name="type" disabled>
+				<option value="1" <?php if ($trade_id == 1) echo "selected" ?> >Engine</option>
+				<option value="2" <?php if ($trade_id == 2) echo "selected" ?> >Airframe</option>
+				<option value="3" <?php if ($trade_id == 3) echo "selected" ?> >Electic Components</option>
+				<option value="4" <?php if ($trade_id == 4) echo "selected" ?> >Instruments</option>
+				<option value="5" <?php if ($trade_id == 5) echo "selected" ?> >Radio</option>
+				<option value="6" <?php if ($trade_id == 6) echo "selected" ?> >Armaments</option>
 			</select>
 		</div>
 		
@@ -213,9 +266,7 @@
 				style="margin-top: 25px;padding: 15px;" 
 				type="submit" 
 				name="submit">
-				<i class="add icon"></i>Create Question
-				
-		</button>
+				<i class="add icon"></i>Create Question</button>
 	</center>
 	
   </div>
@@ -227,48 +278,6 @@
 	</div>
 </div>
 
-
-<?php
- 
-if(isset($_POST['submit']))
-{
-	$ques = $_POST['ques'];
-	$op1 = $_POST['op1'];
-	$op2 = $_POST['op2'];
-	$op3 = $_POST['op3'];
-	$op4 = $_POST['op4'];
-	$ans = $_POST['ans'];
-	$tradeid = $_POST['type'];
-	 
-	if($ques!="" && $op1!="" && $op2!="" && $op3!="" && $op4!="" && $ans!="" && $tradeid!="")
-	{
-		$query = "INSERT INTO QUESTION_BANK (TRADE_ID,DESCRIPTION,OPT_A,OPT_B,OPT_C,OPT_D,CORRECT_ANS,HIDDEN)
-		VALUES ('$tradeid','$ques','$op1','$op2','$op3','$op4','$ans','0')";
-		$data = mysqli_query($db, $query);
-		
-		if($data)
-		{
-			//echo "Data inserted into database";
-			
-			echo"
-			<div class='ui success message transition'>
-				<i class='close icon'></i>
-				<div class='header'>Data inserted successfully.</div>
-			</div>";
-		}
-	}
-	else
-	{
-		//echo "All fields are required.";
-		
-		echo"
-			<div class='ui warning message transition ' >
-				<i class='close icon'></i>
-				<div class='header'>All fields are required.</div>
-			</div>";
-	}
-}
-?>
 
 <script>
 
@@ -291,7 +300,7 @@ $('.message .close')
 
 </script>
 
-<script src="modifyQuizQues.js"></script>
+<!-- <script src="modifyQuizQues.js"></script> -->
 
 </body>
 
